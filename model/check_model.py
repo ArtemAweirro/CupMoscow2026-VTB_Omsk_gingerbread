@@ -114,6 +114,9 @@ def main():
     out["variant_cost"] = {v: get(values, "Варианты", f"{col}{cost_row}") for v, col in zip(["В1", "В2", "В3", "В4"], "DEFG")}
     tot_row = next(c.row for c in wsv["B"] if c.value == "Итого (взвешенная оценка)")
     out["variant_score"] = {v: get(values, "Варианты", f"{col}{tot_row}") for v, col in zip(["В1", "В2", "В3", "В4"], "DEFG")}
+    out["costs"] = {key: find("Затраты", label, "C") for key, label in (
+        ("team", "Команда проекта"), ("infra", "Инфраструктура, данные, ПО"), ("cc", "Контакт-центр"),
+        ("audit", "Внешний аудит"), ("reserve", "Резерв"), ("total", "Итого внедрение"), ("opex", "Итого Opex"))}
     out["budget_ok"] = find("Затраты", "Бюджет ≤", "C")
     out["time_ok"] = find("Затраты", "Срок ≤", "C")
     out["months_cf"] = {

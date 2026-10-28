@@ -3,3 +3,4 @@ __pycache__/
 
 # Материалы кейса (Changellenge): не распространять
 Кейс_*.pdf
+deck/build/

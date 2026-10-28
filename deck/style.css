@@ -1,0 +1,229 @@
+/* Шаблон презентации «Омский пряник». Слайд 1280×720 px = 16:9 (13,33 × 7,5 дюйма).
+   1 pt = 1,333 px: заголовок 35 px ≈ 26 pt, текст 16 px = 12 pt, подписи 13,5 px ≈ 10 pt. */
+:root {
+  --ink: #0b0b0b;
+  --ink2: #52514e;
+  --muted: #8a8984;
+  --grid: #e6e5e0;
+  --soft: #f4f6f9;
+  --navy: #104281;
+  --blue: #2a78d6;
+  --blue-soft: #e8f1fc;
+  --blue-light: #86b6ef;
+  --accent: #eb6834;
+  --accent-soft: #fdeee7;
+  --v1: #eb6834;
+  --v2: #1baf7a;
+  --v3: #2a78d6;
+  --v4: #eda100;
+  --white: #ffffff;
+}
+
+@page { size: 1280px 720px; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--white); }
+body {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.3;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.slide {
+  position: relative;
+  width: 1280px;
+  height: 720px;
+  overflow: hidden;
+  padding: 34px 40px 50px 40px;
+  display: flex;
+  flex-direction: column;
+  page-break-after: always;
+  break-after: page;
+  background: var(--white);
+}
+.slide:last-child { page-break-after: auto; break-after: auto; }
+
+/* шапка: раздел + заголовок-вывод */
+.kicker {
+  font-size: 13.5px;
+  font-weight: bold;
+  color: var(--blue);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.draft {
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 3px;
+  padding: 1px 6px;
+  font-weight: normal;
+}
+h1 {
+  font-size: 35px;
+  line-height: 1.12;
+  font-weight: bold;
+  color: var(--ink);
+  margin-top: 8px;
+  max-width: 1180px;
+}
+.lead { font-size: 16px; color: var(--ink2); margin-top: 8px; max-width: 1100px; }
+.body { position: relative; flex: 1 1 auto; min-height: 0; margin-top: 16px; }
+
+/* подвал: источник и номер */
+.foot {
+  position: absolute;
+  left: 40px; right: 40px; bottom: 14px;
+  display: flex; justify-content: space-between; align-items: flex-end; gap: 24px;
+  font-size: 13.5px; color: var(--muted);
+  border-top: 1px solid var(--grid);
+  padding-top: 6px;
+}
+.foot .num { font-weight: bold; color: var(--ink2); white-space: nowrap; }
+
+/* общие элементы */
+.h3 { font-size: 16px; font-weight: bold; color: var(--ink); margin-bottom: 6px; }
+.h3 .sub { font-weight: normal; color: var(--muted); font-size: 13.5px; margin-left: 6px; }
+.note { font-size: 13.5px; color: var(--ink2); }
+.muted { color: var(--muted); }
+.small { font-size: 13.5px; }
+.b { font-weight: bold; }
+.blue { color: var(--blue); }
+.navy { color: var(--navy); }
+.accent { color: var(--accent); }
+.card {
+  border: 1px solid var(--grid);
+  border-radius: 6px;
+  padding: 12px 14px;
+  background: var(--white);
+}
+.card.soft { background: var(--soft); border-color: var(--soft); }
+.card.key { background: var(--blue-soft); border-color: var(--blue-soft); }
+.row { display: flex; gap: 24px; }
+.col { display: flex; flex-direction: column; gap: 12px; }
+ul.clean { list-style: none; }
+ul.clean li { padding-left: 14px; position: relative; margin: 3px 0; }
+ul.clean li::before { content: ""; position: absolute; left: 0; top: 0.55em; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }
+
+/* таблицы */
+table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+th, td { padding: 5px 7px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--grid); }
+th { font-weight: bold; color: var(--ink2); border-bottom: 1.5px solid var(--ink2); vertical-align: bottom; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+td.c, th.c { text-align: center; }
+tr.total td { font-weight: bold; border-top: 1.5px solid var(--ink2); border-bottom: none; }
+.hl { background: var(--blue-soft); }
+th.hl { color: var(--navy); }
+
+/* значок варианта */
+.vdot { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 6px; vertical-align: 0; }
+
+/* слайд 1 */
+.cover { background: var(--navy); color: var(--white); padding: 0; display: block; }
+.cover .inner { position: absolute; left: 72px; top: 92px; right: 72px; }
+.cover .tag { font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue-light); font-weight: bold; }
+.cover .name { font-size: 58px; line-height: 1.05; font-weight: bold; margin-top: 18px; }
+.cover .sub { font-size: 24px; line-height: 1.3; margin-top: 18px; color: #dbe7f7; max-width: 900px; }
+.cover .facts { position: absolute; left: 72px; right: 72px; bottom: 132px; display: flex; gap: 0; }
+.cover .fact { flex: 1; border-left: 2px solid var(--blue-light); padding: 2px 20px; }
+.cover .fact .v { font-size: 34px; font-weight: bold; }
+.cover .fact .l { font-size: 15px; color: #dbe7f7; margin-top: 4px; }
+.cover .team { position: absolute; left: 72px; right: 72px; bottom: 44px; display: flex; justify-content: space-between; font-size: 16px; color: #dbe7f7; border-top: 1px solid rgba(255,255,255,0.25); padding-top: 14px; }
+.cover .team b { color: var(--white); }
+
+/* схемы с абсолютным позиционированием */
+.canvas { position: relative; }
+.canvas svg.links { position: absolute; left: 0; top: 0; overflow: visible; }
+.box {
+  position: absolute;
+  border: 1.5px solid var(--blue-light);
+  background: var(--white);
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 13.5px;
+  line-height: 1.22;
+  display: flex; align-items: center;
+}
+.box.main { border-color: var(--blue); background: var(--blue-soft); font-weight: bold; color: var(--navy); }
+.box.reg { border: 1.5px dashed var(--navy); background: #eef1f6; color: var(--navy); }
+.box.client { border-color: var(--accent); background: var(--accent-soft); }
+.box.plain { border-color: var(--grid); background: var(--soft); }
+
+.lane-label { position: absolute; font-size: 13.5px; font-weight: bold; color: var(--ink2); display: flex; align-items: center; padding-left: 8px; }
+.lane-bg { position: absolute; border-top: 1px solid var(--grid); }
+.stage-label { position: absolute; font-size: 13.5px; color: var(--muted); text-align: center; font-weight: bold; }
+
+/* блоки архитектуры */
+.block {
+  position: absolute;
+  border: 1.5px solid var(--blue-light);
+  border-radius: 6px;
+  background: var(--white);
+  padding: 8px 10px;
+  font-size: 13.5px;
+  line-height: 1.24;
+}
+.block .t { font-size: 15px; font-weight: bold; color: var(--navy); margin-bottom: 4px; }
+.block .k { color: var(--muted); }
+.block.main { border-color: var(--blue); background: var(--blue-soft); }
+.block.reg { border: 1.5px dashed var(--navy); background: #eef1f6; }
+.block.biz { border-color: var(--accent); background: var(--accent-soft); }
+.block .badge { display: inline-block; font-size: 12px; color: var(--white); background: var(--navy); border-radius: 3px; padding: 0 5px; margin-left: 6px; font-weight: normal; vertical-align: 2px; }
+
+/* дерево причин */
+.why { display: flex; flex-direction: column; gap: 0; }
+.why .lvl { display: flex; gap: 10px; align-items: stretch; }
+.why .n { flex: 0 0 26px; height: 26px; border-radius: 50%; background: var(--navy); color: var(--white); font-weight: bold; font-size: 13.5px; display: flex; align-items: center; justify-content: center; margin-top: 4px; }
+.why .tx { flex: 1; font-size: 14.5px; padding: 6px 10px; border-radius: 6px; background: var(--soft); }
+.why .arrow { font-size: 13px; color: var(--muted); padding: 2px 0 2px 36px; font-style: italic; }
+
+/* телефоны (макеты) */
+.phone {
+  width: 270px; height: 556px;
+  border: 9px solid #1d1d1f; border-radius: 38px;
+  background: var(--white);
+  position: relative; overflow: hidden;
+  font-size: 13.5px; line-height: 1.3;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+}
+.phone .island { position: absolute; top: 8px; left: 50%; width: 76px; height: 20px; margin-left: -38px; background: #1d1d1f; border-radius: 12px; }
+.phone .status { height: 36px; display: flex; justify-content: space-between; align-items: flex-end; padding: 0 18px 2px 22px; font-size: 12px; font-weight: bold; }
+.phone .bar { display: flex; align-items: center; gap: 8px; padding: 10px 14px; font-weight: bold; font-size: 15px; border-bottom: 1px solid var(--grid); }
+.phone .bar .back { color: var(--blue); font-size: 18px; font-weight: normal; }
+.phone .scr { padding: 12px 14px; display: flex; flex-direction: column; gap: 10px; }
+.phone .amt { font-size: 24px; font-weight: bold; }
+.phone .rcp { color: var(--ink2); font-size: 13.5px; }
+.phone .warn { background: #fff5e0; border: 1px solid #f2c36b; border-radius: 10px; padding: 10px; }
+.phone .warn .wt { font-weight: bold; margin-bottom: 4px; }
+.phone .info { background: var(--soft); border-radius: 10px; padding: 10px; color: var(--ink2); }
+.phone .btn { border-radius: 10px; padding: 10px; text-align: center; font-weight: bold; font-size: 14px; }
+.phone .btn.p { background: var(--blue); color: var(--white); }
+.phone .btn.s { border: 1.5px solid var(--blue); color: var(--blue); }
+.phone .btn.d { background: #c8372d; color: var(--white); }
+.phone .btn.ds { border: 1.5px solid #c8372d; color: #c8372d; }
+.phone .bottom { position: absolute; left: 14px; right: 14px; bottom: 22px; display: flex; flex-direction: column; gap: 8px; }
+.phone .home { position: absolute; bottom: 6px; left: 50%; width: 100px; margin-left: -50px; height: 4px; border-radius: 2px; background: #1d1d1f; }
+.phone .center { text-align: center; }
+.phone .timer { font-size: 34px; font-weight: bold; text-align: center; color: var(--navy); font-variant-numeric: tabular-nums; }
+.phone .field { border: 1px solid var(--grid); border-radius: 10px; padding: 8px 10px; }
+.phone .field .fl { font-size: 12px; color: var(--muted); }
+.phone .tiny { font-size: 12px; color: var(--muted); }
+.scaled { transform-origin: top left; }
+
+/* мини-графики */
+.bars .bar-row { display: flex; align-items: center; gap: 8px; margin: 5px 0; font-size: 13.5px; }
+.bars .lab { flex: 0 0 auto; color: var(--ink2); }
+.bars .track { flex: 1; height: 16px; position: relative; }
+.bars .fill { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 2px; }
+.bars .val { position: absolute; top: -1px; font-size: 13.5px; font-weight: bold; white-space: nowrap; }
+
+.img-full { display: block; max-width: 1200px; max-height: 462px; margin: 0 auto; }
+table.tight th, table.tight td { padding: 4px 7px; }
+table.wrap-head th { white-space: normal; }
